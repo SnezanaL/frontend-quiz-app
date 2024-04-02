@@ -1,0 +1,17 @@
+@media only screen and (max-width: 26.75em) {
+  html {
+    font-size: 60%;
+  }
+
+  .rating-component__container {
+    margin: 0 1rem;
+  }
+}
+
+@media only screen and (max-width: 24.06em) {
+  .modal-rating__container {
+    height: 45rem;
+    justify-content: center;
+    width: 38rem;
+  }
+}
