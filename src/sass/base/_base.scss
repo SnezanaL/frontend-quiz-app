@@ -1,26 +1,31 @@
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
+/**
+ * Set up a decent box model on the root element
+ */
+html {
   box-sizing: border-box;
 }
 
-html {
-  font-size: 62.5%;
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
-body {
-  font-size: 1.5rem;
-  font-family: 'Overpass', sans-serif;
-}
+/**
+ * Basic styles for links
+ */
+a {
+  color: $brand-color;
+  text-decoration: none;
 
-.attribution {
-  font-size: 1.5rem;
-  text-align: center;
-  margin: 2rem 0;
-}
-
-.attribution a {
-  color: hsl(228, 45%, 44%);
+  @include on-event {
+    color: $text-color;
+    text-decoration: underline;
+  }
 }

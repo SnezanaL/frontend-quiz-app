@@ -1,15 +1,6 @@
-// ----------- COLORS
+// ----------- SPACE UTILITIES ------------ //
 
-$orange-primary-color: #fb7413;
-$white: #ffffff;
-$light-grey: #959eac;
-$medium-grey: #7c8798;
-$dark-blue: #252d37;
-$very-dark-blue: #121417;
-
-// ----------- SPACE UTILITIES
-
-.margim-bottom-big {
+.margin-bottom-big {
   margin-bottom: 3rem;
 }
 
@@ -21,7 +12,7 @@ $very-dark-blue: #121417;
   margin-top: 3rem;
 }
 
-// ------------ MIXINS
+// ------------ MIXINS ------------ //
 
 @mixin cursor-pointer-color-white {
   color: $white;

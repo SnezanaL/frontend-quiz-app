@@ -1,0 +1,79 @@
+.frame {
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.switcher-wrapper {
+  display: flex;
+}
+
+.sun {
+  display: block;
+  height: 40px;
+  width: 40px;
+  background: gold;
+  margin: 0 10px;
+  transition: background-color 0.4s;
+  border-radius: 50%;
+}
+
+[data-theme="dark"] .sun {
+  background: Gainsboro;
+  opacity: 0.3;
+}
+
+.moon {
+  display: block;
+  position: relative;
+  height: 40px;
+  width: 40px;
+  background: transparent;
+  top: -10px;
+  left: -20px;
+  margin: 0 10px;
+  border-radius: 50%;
+  box-shadow: 15px 10px 0px 0px Gainsboro;
+}
+
+[data-theme="dark"] .moon {
+  box-shadow: 15px 10px 0px 0px white;
+}
+
+.switch {
+  display: block;
+  box-sizing: border-box;
+  width: 100px;
+  height: 40px;
+  background: rgb(200 200 200 / 40%);
+  border-radius: 30px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.slider {
+  display: block;
+  width: 30px;
+  height: 100%;
+  background: GhostWhite;
+  border-radius: 30px;
+  transition: all 0.4s;
+  box-shadow: 0px 0px 4px rgb(0 0 0 / 30%);
+}
+
+.switch > input[type="checkbox"] {
+  display: none;
+}
+
+.switch > input:checked ~ .slider {
+  transform: translateX(200%);
+}
+
+#theme-info {
+  display: block;
+  text-align: center;
+  font-family: "Courier New", monospace;
+  text-transform: capitalize;
+}

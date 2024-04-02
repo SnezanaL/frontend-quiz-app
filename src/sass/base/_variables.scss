@@ -1,0 +1,20 @@
+// ----------- COLORS ------------ //
+
+$white: #ffffff;
+$purple-color: #a729f5;
+$dark-blue-color: #313e51;
+$medium-blue-color: #3b4d66;
+$light-blue-color: #626c7f;
+$grey-color: #abc1e1;
+$light-grey-color: #f4f6fa;
+$green-color: #26d782;
+$red-color: #ee5454;
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+$breakpoints: (
+  "small": 320px,
+  "medium": 768px,
+  "large": 1024px,
+) !default;

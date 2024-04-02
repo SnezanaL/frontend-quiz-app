@@ -1,13 +1,16 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
   entry: "./src/app.ts",
   output: {
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
     publicPath: "",
+    //clean: true,
   },
   devtool: "cheap-module-source-map",
   mode: "development",
@@ -16,6 +19,7 @@ module.exports = {
     static: {
       directory: path.resolve(__dirname, "dist"),
     },
+    open: true,
     devMiddleware: {
       index: "index.html",
       writeToDisk: true,
@@ -42,10 +46,14 @@ module.exports = {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
-      {
-        test: /\.(png|gif|jpg|jpeg|svg|xml)$/,
-        use: "asset/resource",
-      },
+      // {
+      //   test: /\.(png|gif|jpg|jpeg|svg|xml)$/,
+      //   use: "asset/resource",
+      // },
+      // {
+      //   test: /\.(woff|woff2|ttf|otf|eot)$/,
+      //   use: "asset/resource",
+      // },
       { test: /\.json$/, type: "json" },
     ],
   },
@@ -59,5 +67,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "src/index.html",
     }),
+    new MiniCssExtractPlugin(),
   ],
 };
