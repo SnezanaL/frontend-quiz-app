@@ -2,10 +2,10 @@
 
 $white: #ffffff;
 $purple-color: #a729f5;
-$dark-blue-color: #313e51;
-$medium-blue-color: #3b4d66;
+$dark-navy-color: #313e51;
+$gray-navy-color: #3b4d66;
 $light-blue-color: #626c7f;
-$grey-color: #abc1e1;
+$light-bluish-color: #abc1e1;
 $light-grey-color: #f4f6fa;
 $green-color: #26d782;
 $red-color: #ee5454;
@@ -18,3 +18,108 @@ $breakpoints: (
   "medium": 768px,
   "large": 1024px,
 ) !default;
+
+// ----------- TYPOGRAPHY ------------ //
+// display --> rubik medium 144 px 100% line height
+// use variable
+$display-font-size: 144px;
+$display-line-height: 100%;
+$display-font-weight: 500;
+$display-font-family: "Rubik-Medium", sans-serif;
+
+//use mixins
+@mixin display {
+  font-size: $display-font-size;
+  line-height: $display-line-height;
+  font-weight: $display-font-weight;
+  font-family: $display-font-family;
+}
+//Heading L (Bold) --> rubik medium 64 px 100% line height
+// use variable
+$heading-l-font-size: 64px;
+$heading-l-line-height: 100%;
+$heading-l-font-weight: 500;
+$heading-l-font-family: "Rubik-Medium", sans-serif;
+
+// use mixins
+@mixin heading-l {
+  font-size: $heading-l-font-size;
+  line-height: $heading-l-line-height;
+  font-weight: $heading-l-font-weight;
+  font-family: $heading-l-font-family;
+}
+
+//Heading L (Regular) --> rubik regular 64 px 100% line height
+// use variable
+$heading-l-regular-font-size: 64px;
+$heading-l-regular-line-height: 100%;
+$heading-l-regular-font-weight: 400;
+$heading-l-regular-font-family: "Rubik", sans-serif;
+
+// use mixins
+@mixin heading-l-regular {
+  font-size: $heading-l-regular-font-size;
+  line-height: $heading-l-regular-line-height;
+  font-weight: $heading-l-regular-font-weight;
+  font-family: $heading-l-regular-font-family;
+}
+
+//Heading M (Bold) --> rubik medium 36 px 100% line height
+// use variable
+$heading-m-font-size: 36px;
+$heading-m-line-height: 100%;
+$heading-m-font-weight: 500;
+$heading-m-font-family: "Rubik-Medium", sans-serif;
+
+// use mixins
+@mixin heading-m {
+  font-size: $heading-m-font-size;
+  line-height: $heading-m-line-height;
+  font-weight: $heading-m-font-weight;
+  font-family: $heading-m-font-family;
+}
+
+//Heading s (Bold) --> rubik medium 28 px 100% line height
+// use variable
+$heading-s-font-size: 28px;
+$heading-s-line-height: 100%;
+$heading-s-font-weight: 500;
+$heading-s-font-family: "Rubik-Medium", sans-serif;
+
+// use mixins
+@mixin heading-s {
+  font-size: $heading-s-font-size;
+  line-height: $heading-s-line-height;
+  font-weight: $heading-s-font-weight;
+  font-family: $heading-s-font-family;
+}
+
+// Body m (Regular) --> rubik regular 12 px 150% line height
+// use variable
+$body-m-font-size: 16px;
+$body-m-line-height: 150%;
+$body-m-font-weight: 400;
+$body-m-font-family: "Rubik", sans-serif;
+
+// use mixins
+@mixin body-m {
+  font-size: $body-m-font-size;
+  line-height: $body-m-line-height;
+  font-weight: $body-m-font-weight;
+  font-family: $body-m-font-family;
+}
+
+// Body s (Regular) --> rubik regular italic 12 px 150% line height
+// use variable
+$body-s-font-size: 16px;
+$body-s-line-height: 150%;
+$body-s-font-weight: 400;
+$body-s-font-family: "Rubik-Italic", sans-serif;
+
+// use mixins
+@mixin body-s {
+  font-size: $body-s-font-size;
+  line-height: $body-s-line-height;
+  font-weight: $body-s-font-weight;
+  font-family: $body-s-font-family;
+}

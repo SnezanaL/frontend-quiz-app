@@ -1,25 +1,40 @@
+@use "../base/variables.scss" as v;
+
 :root {
   --grid-unit: 1rem;
   --border-radius-base: 0.5rem;
 }
 
 [data-theme="light"] {
-  --color-bg: #ffffff;
-  --color-fg: #000000;
+  --bg: url("./../../assets/images/pattern-background-desktop-light.svg");
+  --color-fg: #313e51;
+  --color-bg: #f4f6fa;
+  --color-card-bg: #ffffff;
 }
 
 [data-theme="dark"] {
-  --color-bg: #000000;
+  //use variable from _variables.scss
+  --bg: url("./../../assets/images/pattern-background-desktop-dark.svg");
+
   --color-fg: #ffffff;
+  --color-bg: #313e51;
+  --color-card-bg: #3b4d66;
 }
 
 /* example use of CSS custom properties */
 body {
   background-color: var(--color-bg);
+  background-image: var(--bg);
   color: var(--color-fg);
-  display: grid;
+  background-size: cover;
+  background-repeat: no-repeat;
   min-height: 100vh;
-  place-items: center;
+  max-width: 1160;
+  width: 90vw;
+  margin: 0 auto;
+}
+p {
+  @include body-s;
 }
 
 button {
@@ -32,4 +47,75 @@ button {
   color: var(--color-fg);
   background-color: var(--color-bg);
   border: 0.25rem solid var(--color-fg);
+}
+
+.container {
+  display: flex;
+  //justify-content: space-between;
+  .row {
+    width: 50%;
+    box-sizing: border-box;
+  }
+  h3 {
+    @include heading-l-regular;
+    color: var(--color-fg);
+    margin-bottom: 10px;
+  }
+  h1 {
+    @include heading-l;
+    color: var(--color-fg);
+    margin-top: 0;
+  }
+  .card {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--color-card-bg);
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-start;
+    border-radius: 24px;
+    // drop shadow
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    height: 96px;
+    .card-img {
+      width: 56px;
+      height: 56px;
+      border-radius: 15px;
+      margin-right: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    h3 {
+      @include heading-s;
+      color: var(--color-fg);
+      margin: 0;
+    }
+  }
+  #html {
+    .card-img {
+      background-color: #fff1e9;
+    }
+  }
+  #css {
+    .card-img {
+      background-color: #e0fdef;
+    }
+  }
+  #js {
+    .card-img {
+      background-color: #ebf0ff;
+    }
+  }
+  #access {
+    .card-img {
+      background-color: #f6e7ff;
+    }
+  }
 }

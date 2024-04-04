@@ -1,51 +1,51 @@
-const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: './src/app.ts',
+  entry: "./src/ts/app.ts",
   output: {
-    filename: 'bundle.[contenthash].js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '',
+    filename: "bundle.[contenthash].js",
+    path: path.resolve(__dirname, "dist"),
+    publicPath: "",
   },
-  mode: 'production',
+  mode: "production",
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/env'],
+            presets: ["@babel/env"],
           },
         },
       },
       {
         test: /\.tsx?$/,
-        use: ['ts-loader'],
+        use: ["ts-loader"],
         exclude: /node_modules/,
       },
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: [".tsx", ".ts", ".js"],
   },
   plugins: [
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ['**/*'],
+      cleanOnceBeforeBuildPatterns: ["**/*"],
     }),
     new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css',
+      filename: "style.[contenthash].css",
     }),
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: "src/index.html",
     }),
   ],
 };

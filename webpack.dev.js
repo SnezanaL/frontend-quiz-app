@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
-  entry: "./src/app.ts",
+  entry: "./src/ts/app.ts",
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
@@ -51,9 +51,25 @@ module.exports = {
       //   use: "asset/resource",
       // },
       // {
+      //   test: /\.svg/,
+      //   type: "assets",
+      // },
+      // {
+      //   test: /\.(jpe?g|png|gif|svg)$/i,
+      //   loader: "file-loader",
+      // },
+      // {
       //   test: /\.(woff|woff2|ttf|otf|eot)$/,
       //   use: "asset/resource",
       // },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader",
+          },
+        ],
+      },
       { test: /\.json$/, type: "json" },
     ],
   },
@@ -65,6 +81,8 @@ module.exports = {
       cleanOnceBeforeBuildPatterns: ["**/*"],
     }),
     new HtmlWebpackPlugin({
+      filename: "index.html",
+      alwaysWriteToDisk: true,
       template: "src/index.html",
     }),
     new MiniCssExtractPlugin(),
