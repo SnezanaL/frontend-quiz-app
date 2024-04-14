@@ -32,11 +32,31 @@ export function calculateScore(
 ): number {
   let score = 0;
   questions.forEach((question, index) => {
+    console.log(
+      "🚀 ~ questions.forEach ~ answers.get(index):",
+      answers.get(index)
+    );
+    console.log(
+      "🚀 ~ questions.forEach ~ answers.has(index):",
+      answers.has(index)
+    );
     if (answers.has(index) && answers.get(index) === question.answer) {
       score++;
     }
   });
   return score;
+}
+
+// Function to check if the provided answer is correct
+function checkAnswer(
+  question: Question,
+  userAnswer: string
+): { correct: boolean; correctAnswer?: string } {
+  const correct = userAnswer === question.answer;
+  if (!correct) {
+    return { correct: false, correctAnswer: question.answer };
+  }
+  return { correct: true };
 }
 
 // Render current question on the page
@@ -128,6 +148,15 @@ function renderQuestion(
     // questionDiv.appendChild(optionLabel);
   }
 
+  // Function to find the card with the correct answer
+  function findCardWithCorrectAnswer(answer: string): Element | null {
+    const corr = Array.from(document.querySelectorAll(`.card h3`))
+      .find((e) => e.textContent === answer)
+      .closest(".card");
+    console.log(" correct Card:", corr);
+    return corr;
+  }
+
   // a bit delayed to make sure the cards are created
   setTimeout(() => {
     const cards = document.querySelectorAll(".cardOption");
@@ -154,26 +183,36 @@ function renderQuestion(
 
   nextButton.textContent = "Submit Answer";
   nextButton.addEventListener("click", () => {
-    console.log(
-      "🚀 ~ optionInput.addEventListener ~  question.question:",
-      question.question
-    );
-    // Move to the next question
-    currentQuestionIndex++;
-    console.log(
-      "🚀 ~ nextButton.addEventListener ~ currentQuestionIndex:",
-      currentQuestionIndex
-    );
-    if (currentQuestionIndex < questions.length) {
-      renderCurrentQuestion(id);
+    if (nextButton.textContent === "Next Question") {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        renderCurrentQuestion(id);
+      } else {
+        // End of questions
+        quizContainer.innerHTML = "End of questions.";
+      }
+      // renderQuestion(id, questions, quizContainer);
+      // return;
     } else {
-      // End of questions
-      quizContainer.innerHTML = "End of questions.";
+      const checkIfCorrect = checkAnswer(question, question.question);
+      console.log("checkIfCorrect:", checkIfCorrect);
+      if (!checkIfCorrect.correct) {
+        const correctAnswer = checkIfCorrect.correctAnswer;
+        const cards = document.querySelectorAll(".cardOption");
+
+        const cardWithCorrectAnswer = findCardWithCorrectAnswer(correctAnswer);
+        console.log("Card with correct answer:", cardWithCorrectAnswer);
+        cardWithCorrectAnswer.classList.add("correct");
+
+        const selectedCard = document.querySelector(".selected");
+        selectedCard.classList.add("wrong");
+        selectedCard.classList.remove("selected");
+        nextButton.textContent = "Next Question";
+      }
     }
   });
 
   if (currentQuestionIndex === questions.length - 1) {
-    //nextButton.textContent = "Submit";
     nextButton.addEventListener("click", () => {
       const score = calculateScore(questions, answers);
 
@@ -181,7 +220,7 @@ function renderQuestion(
     });
   }
 
-  console.log("🚀 ~ submitButton.addEventListener ~ answers:", answers);
+  console.log("answers:", answers);
   quizContainer.appendChild(questionDiv);
   quizContainer.appendChild(optionsDiv);
   optionsDiv.appendChild(nextButton);

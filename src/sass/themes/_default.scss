@@ -79,6 +79,31 @@ button {
     margin-top: 0;
   }
   .card {
+    &.wrong {
+      background-image: url("../../assets/images/icon-error.svg");
+      background-position: 97%;
+      background-repeat: no-repeat;
+      border: 2px solid $red-color;
+      .optionLabel {
+        background-color: $red-color;
+        .optionLetter {
+          color: $white;
+        }
+      }
+      &:hover .optionLabel {
+        background-color: $red-color;
+        .optionLetter {
+          color: $white;
+        }
+      }
+    }
+
+    &.correct {
+      background-image: url("../../assets/images/icon-correct.svg");
+      background-position: 97%;
+      background-repeat: no-repeat;
+    }
+
     width: 100%;
     padding: 1rem;
     background-color: var(--color-card-bg);
@@ -93,6 +118,7 @@ button {
     height: 96px;
     transition: all var(--global-transition-time) ease-in-out;
     cursor: pointer;
+
     &:hover .optionLabel {
       background-color: #f6e7ff;
       color: v.$purple-color;

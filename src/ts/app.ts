@@ -25,15 +25,6 @@ function addTitleToHeader(title: string) {
   headerTitle.textContent = title;
   headerTitle.classList.add("header-title");
   headerDiv.classList.add("header-div");
-  // if (title === "HTML") {
-  //   headerImage.src = HTMLImg;
-  // } else if (title === "CSS") {
-  //   headerImage.src = CSSImg;
-  // } else if (title === "JavaScript") {
-  //   headerImage.src = JavaScriptImg;
-  // } else if (title === "Accessibility") {
-  //   headerImage.src = AccessibilityImg;
-  // }
 
   interface TitleToImageMap {
     [title: string]: string;
