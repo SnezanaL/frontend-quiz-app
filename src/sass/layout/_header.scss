@@ -6,12 +6,23 @@ header {
   margin-top: 50px;
 }
 
-.frame {
-  // position: absolute;
-  // display: block;
-  // top: 50%;
-  // left: 50%;
-  // transform: translate(-50%, -50%);
+.header-div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  .header-image {
+    width: 56px;
+    height: 56px;
+    background-color: #f6e7ff;
+    padding: 8px;
+    border-radius: 10px;
+    margin-right: 30px;
+  }
+  .header-title {
+    @include heading-s;
+    color: var(--color-fg);
+    margin: 0;
+  }
 }
 
 .switcher-wrapper {
