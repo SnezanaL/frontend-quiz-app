@@ -1,7 +1,7 @@
 import "../sass/main.scss";
 
 import { initializeThemeToggle } from "./theme";
-import { renderCurrentQuestion } from "./quiz";
+import { renderCurrentQuestion } from "./questionService";
 // import htmlImg from "../../assets/images/icon-html.svg";
 // import cssImg from "../../assets/images/icon-css.svg";
 
