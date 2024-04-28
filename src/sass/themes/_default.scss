@@ -59,6 +59,8 @@ button {
 .container {
   display: flex;
   transition: all 2s ease-in-out;
+  gap: 30px;
+
   .row {
     width: 50%;
     box-sizing: border-box;
@@ -252,5 +254,29 @@ button {
   text-align: center;
   img {
     margin-right: 0.5rem;
+  }
+}
+
+.score-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-card-bg);
+  border-radius: 24px;
+  padding: 2rem 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  flex-direction: column;
+  .score-title {
+    display: flex;
+    align-items: center;
+    h2 {
+      @include heading-s;
+      margin-left: 1rem;
+    }
+  }
+  h1 {
+    @include display;
+    margin-bottom: 0;
   }
 }

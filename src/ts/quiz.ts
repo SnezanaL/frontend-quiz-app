@@ -4,10 +4,12 @@ import {
   checkAnswer,
   calculateScore,
 } from "./quizHelper";
+import { addScoreCard, id } from "./app";
 const errorIcon = require("../../assets/images/icon-error.svg") as string;
 
 let currentQuestionIndex = 1;
 let message = "";
+let score = 0;
 
 export function renderQuestion(
   id: string,
@@ -146,16 +148,16 @@ export function renderQuestion(
         selectedCard.classList.remove("selected");
         nextButton.textContent = "Next Question";
       } else {
+        score++;
         selectedCard.classList.remove("selected");
         selectedCard.classList.add("correctAnswer");
+        nextButton.textContent = "Next Question";
       }
     }
   });
 
   if (currentQuestionIndex === questions.length - 1) {
     nextButton.addEventListener("click", () => {
-      const score = calculateScore(questions, answers);
-
       displayScore(score, questions.length);
     });
   }
@@ -190,9 +192,16 @@ function displayScore(score: number, totalQuestions: number): void {
   if (!quizContainer) {
     throw new Error("Quiz container not found");
   }
+  const headerTitle = id;
 
-  const scoreMessage = document.createElement("p");
-  scoreMessage.textContent = `You scored ${score} out of ${totalQuestions}!`;
-  quizContainer.innerHTML = "";
-  quizContainer.appendChild(scoreMessage);
+  const scoreDisplay = addScoreCard(headerTitle, score, totalQuestions);
+  console.log(" scoreDisplay:", scoreDisplay);
+  quizContainer.style.display = "none";
+  const main = document.querySelector("main");
+  main.appendChild(scoreDisplay);
+
+  // const scoreMessage = document.createElement("p");
+  // scoreMessage.textContent = `You scored ${score} out of ${totalQuestions}!`;
+
+  // quizContainer.appendChild(scoreMessage);
 }
